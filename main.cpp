@@ -32,51 +32,45 @@ void yapping(){
     system("clear"); 
 
     // Computer choosing number
-    cout << "\nComputer choosing number";
-    usleep(1500000);
+    cout << "\nComputer choosing number\n";
+    usleep(500000);
     system("clear"); 
-    cout << "\nComputer choosing number .";
-    usleep(1500000);
+    cout << "\nComputer choosing number .\n";
+    usleep(500000);
     system("clear"); 
-    cout << "\nComputer choosing number . .";
-    usleep(1500000);
+    cout << "\nComputer choosing number . .\n";
+    usleep(500000);
     system("clear"); 
-    cout << "\nComputer choosing number . . .";
-    usleep(1500000);
+    cout << "\nComputer choosing number . . .\n";
+    usleep(500000);
     system("clear"); 
-    cout << "\nComputer has choosen a number!";
-    usleep(3000000);
+    cout << "\nComputer has choosen a number!\n";
+    usleep(2000000);
     system("clear"); 
-    cout << "\nStarting in 3";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3.";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3..";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3...";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3...2";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3...2.";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3...2..";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3...2...";
-    usleep(250000);
-    system("clear"); 
-    cout << "\nStarting in 3...2...1\n";
-    usleep(250000);
-    system("clear");
 }
 
-int main(int argc, const char * argv[]) {
+void win(int secret_num, int attempts, int guesses[9999]){
+    system("clear");
+    cout << "\nYOU'VE GUESSED THE NUMBER!!!\n";
+    usleep(2000000);
+    cout << "\nThe secret number was " << secret_num << ".\n";
+    usleep(2000000);
+    cout << "\nIt took you " << attempts << " attempts to guess the number.\n";
+    usleep(2000000);
+    cout << "\nThe numbers you guessed were: \n";
+    for (int i = 0; i < attempts; i++){
+        usleep(500000);
+        cout << guesses[i] << endl;
+        continue;
+    }
+}
+
+int difficulty(){
+    system("clear");
+    cout << "\nChoose a difficultly (Easy:0, Medium:1, Hard:2)\n":
+}
+
+int main() {
     //Prepare important variables
     int secret_num = random_num();
     int attempts;
@@ -86,62 +80,50 @@ int main(int argc, const char * argv[]) {
     yapping();
 
     attempts++;
-    cout << "Guess a number: ";
+    cout << "\nGuess a number: ";
     cin >> guess;
     guesses[attempts-1] = guess;
     do{
         if (guess > secret_num-2 && guess < secret_num || guess < secret_num+2 && guess > secret_num){
             system("clear"); 
             attempts++;
-            cout << "VERY WARM!\n";
+            cout << "\nVERY WARM!\n";
             usleep(500000);
-            cout << "Guess another number: ";
+            cout << "\nGuess another number: ";
             cin >> guess;
             guesses[attempts-1] = guess;
             continue;
         } else if (guess > secret_num-4 && guess < secret_num || guess < secret_num+4 && guess > secret_num){
             system("clear"); 
             attempts++;
-            cout << "Warm\n";
+            cout << "\nWarm\n";
             usleep(500000);
-            cout << "Guess another number: ";
+            cout << "\nGuess another number: ";
             cin >> guess;
             guesses[attempts-1] = guess;
             continue;
         } else if (guess > secret_num-7 && guess < secret_num || guess < secret_num+7 && guess > secret_num){
             system("clear"); 
             attempts++;
-            cout << "Cold\n";
+            cout << "\nCold\n";
             usleep(500000);
-            cout << "Guess another number: ";
+            cout << "\nGuess another number: ";
             cin >> guess;
             guesses[attempts-1] = guess;
             continue;
         } else {
             system("clear"); 
             attempts++;   
-            cout << "Very Cold\n";
+            cout << "\nVery Cold\n";
             usleep(500000);
-            cout << "Guess another number: ";
+            cout << "\nGuess another number: ";
             cin >> guess;
             guesses[attempts-1] = guess;
             continue;
         }
     } while (guess != secret_num);
     
-    system("clear");
-    cout << "YOU'VE GUESSED THE NUMBER!!!\n";
-    usleep(3000000);
-    cout << "\nThe secret number was " << secret_num << ".\n";
-    usleep(3000000);
-    cout << "\nIt took you " << attempts << " attempts to guess the number.\n";
-    usleep(3000000);
-    cout << "\nThe numbers you guessed were: \n";
-    for (int i = 0; i < attempts; i++){
-        usleep(500000);
-        cout << guesses[i] << endl;
-        continue;
-    }
+    win(secret_num, attempts, guesses);
 
     return 0;
 }
